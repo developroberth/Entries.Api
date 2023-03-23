@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Linq;
 using static System.Net.WebRequestMethods;
 
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace Entries.Api.Controllers
 {
@@ -22,14 +21,14 @@ namespace Entries.Api.Controllers
             _logger = logger;
         }
 
-       
-        [HttpPost("GetHTTPS")]
-        public async Task<IActionResult> Get( FilterHTTPSModel filter )
-        {
-            Response responseEntries = await _apiService.GetListEntriesAsync<EntryModel>();
 
+        [HttpPost("GetHTTPS")]
+        public async Task<IActionResult> Get(FilterHTTPSModel filter)
+        {
             try
             {
+                Response responseEntries = await _apiService.GetListEntriesAsync<EntryModel>();
+
                 if (responseEntries == null)
                 {
                     return StatusCode(StatusCodes.Status204NoContent, "Ocurrio un errro intentelo mas tarde.");
@@ -48,13 +47,13 @@ namespace Entries.Api.Controllers
             }
         }
 
-        
+
         [HttpGet("CategoryDistinct")]
         public async Task<IActionResult> Category()
         {
-            Response responseEntries = await _apiService.GetListEntriesAsync<EntryModel>();
             try
             {
+                Response responseEntries = await _apiService.GetListEntriesAsync<EntryModel>();
 
                 if (responseEntries == null)
                 {

@@ -6,15 +6,13 @@ namespace Entries.Api.Services
 {
     public class ApiService : IApiService
     {
-        //private readonly ILogger _logger;
 
         private readonly ILogger<ApiService> _logger;
         private readonly string _urlBase;
         public ApiService(IConfiguration configuration, ILogger<ApiService> logger)
         {
-
             _urlBase = configuration["EntriesAPI:urlBase"];
-            _logger= logger;
+            _logger = logger;
         }
 
         public async Task<Response> GetListEntriesAsync<T>()
